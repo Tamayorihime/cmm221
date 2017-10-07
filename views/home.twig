@@ -1,56 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- lang="en"
-	คือการกำหนดภาษาหลักให้กับเว็บไซต์-->
-<head>
-	<meta charset="UTF-8">
-	<title>CMM 19</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
-	<link rel="stylesheet" href="/assets/home.css">
-</head>
-<body>
-    <header>
-      <div class="has-text-centered">
-    	<img src="/assets/images/logo.png" alt="" width="145" height="auto">
-      </div>
+   {% extends 'layout/base.twig' %}
 
-       <nav class="navbar-tabs">
-      	<a href="#" class="navbar-item">WORK</a>
-      	<a href="#" class="navbar-item">INTERVIEW</a>
-      	<a href="#" class="navbar-item">WORK</a>
-      	<a href="#" class="navbar-item">WORK</a>
-      	<a href="#" class="navbar-item">WORK</a>
-      	<a href="#" class="navbar-item">WORK</a>
-      	<a href="#" class="navbar-item">WORK</a>
-      	<a href="#" class="navbar-item">WORK</a>
-      </nav>
+   {% block stylesheet %}
+     <link rel="stylesheet" href="/assets/home.css">
+   {% endblock %}
+
+   {% block content %}
       <main>
       	<section class="banner">
       		<div class ="highlight">
       		  <div class ="columns">
-      		  	<div class="column is-size-1 has-text-weight-bold has-text-centered has-text-warning highlight-item">
-      		  	<hl>Are you ready?</hl>
-      		  	</div>
+      		  <div class="column highlight-item" style="background-image: url({{highlight.url}});">
+                  <div class="has-text-weight=bold is-size-1-desktop">
+      		  	<h1>{{ highlight.title }}</h1>
+                 </div>
+      		  </div>
       		  </div>
       		</div>
-            <div class ="thumbnail">
-            	<div class ="columns is-marginless">
-      		  		 <div class ="column thumbnail-item is-paddingless has-text-centered" style="background-image: url(/assets/images/home/banner/thumbnail-1.jpg);">
-      		  	     Are you ready?
-      		  	     </div>
 
-      		  	     <div class ="column thumbnail-item is-paddingless has-text-centered" style="background-image: url(/assets/images/home/banner/thumbnail-2.jpg);">
-                     Are you ready?
-      		  	     </div>
-
-      		  	     <div class ="column thumbnail-item is-paddingless has-text-centered" style="background-image: url(/assets/images/home/banner/thumbnail-3.jpg);">
-      		         Are you ready?
-      		  	     </div>
-
-      		  	     <div class ="column thumbnail-item is-paddingless has-text-centered" style="background-image:url(/assets/images/home/banner/thumbnail-4.jpg);">
-      		  	     Are you ready?
-      		  	     </div>
+            <div class="thumbnail">
+            <div class="columns is-marginless">
+            {% for item in thumbnail %}
+               <a href="#" class="column thumbnail-item" style="background-image:
+               url({{ item.url }});">
+               {{ item.title}}
+               </a>
+               {% endfor %}
             </div>
+         </div>
       	</section>
         <section class="section we-present">
          <div class="container">
@@ -195,7 +171,5 @@
              </a>
         </section>
       </main>
-
     </header>
-</body> 
-</html>
+{% endblock %}
